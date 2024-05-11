@@ -4,5 +4,5 @@ import com.aditya.multimodule.model.commons.Result;
 
 public interface RestClientAdapter {
 
-    Result<String> consume();
+    Result<Boolean> delete(String nit);
 }

@@ -29,22 +29,19 @@ public class ClientUseCaseImpl implements ClientUseCase {
         return clientAdapter.save(client);
     }
 
-    public Result<String> callClient(){
-        return restClientAdapter.consume();
-    }
     @Override
     public Result<Client> findClientByNit(Long nit) {
         return clientAdapter.findById(nit);
     }
 
     @Override
-    public Result<List<Client>> findAllClients(String direction, String property) {
-        return clientAdapter.findAll(direction, property);
+    public Result<List<Client>> findAllClients(String direction) {
+        return clientAdapter.findAll(direction);
     }
 
     @Override
-    public Result<List<Client>> findAllClients(int pageNumber, int pageSize, String sortDirection, String property) {
-        return clientAdapter.findAll(pageNumber, pageSize, sortDirection, property);
+    public Result<List<Client>> findAllClients(int pageNumber, int pageSize, String sortDirection) {
+        return clientAdapter.findAll(pageNumber, pageSize, sortDirection);
     }
 
     @Override
@@ -54,6 +51,13 @@ public class ClientUseCaseImpl implements ClientUseCase {
 
     @Override
     public Result<Boolean> deleteClientByNit(Long nit) {
-        return clientAdapter.deleteById(nit);
+        Result<Boolean> deleteAccountsResult = restClientAdapter.delete(String.valueOf(nit));
+
+        if (deleteAccountsResult.isSuccess()) {
+            return clientAdapter.deleteById(nit);
+
+        } else {
+            return new Result<Boolean>().addError(deleteAccountsResult.getErrors().get(0));
+        }
     }
 }
