@@ -3,6 +3,7 @@ package com.aditya.multimodule.service.impl;
 import com.aditya.multimodule.model.Client;
 import com.aditya.multimodule.model.commons.Result;
 import com.aditya.multimodule.repository.adapters.ClientAdapter;
+import com.aditya.multimodule.rest.RestClientAdapter;
 import com.aditya.multimodule.service.ClientUseCase;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,12 +13,15 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class ClientUseCaseImpl implements ClientUseCase{
+public class ClientUseCaseImpl implements ClientUseCase {
 
     private final ClientAdapter clientAdapter;
+    private final RestClientAdapter restClientAdapter;
 
-    public ClientUseCaseImpl(ClientAdapter clientAdapter) {
+
+    public ClientUseCaseImpl(ClientAdapter clientAdapter, RestClientAdapter restClientAdapter) {
         this.clientAdapter = clientAdapter;
+        this.restClientAdapter = restClientAdapter;
     }
 
     @Override
@@ -25,6 +29,9 @@ public class ClientUseCaseImpl implements ClientUseCase{
         return clientAdapter.save(client);
     }
 
+    public Result<String> callClient(){
+        return restClientAdapter.consume();
+    }
     @Override
     public Result<Client> findClientByNit(Long nit) {
         return clientAdapter.findById(nit);

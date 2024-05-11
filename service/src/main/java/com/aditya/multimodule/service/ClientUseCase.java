@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface ClientUseCase {
 
+    Result<String> callClient();
+
     Result<Client> createClient(Client client);
     Result<Client> findClientByNit(Long nit);
     Result<List<Client>> findAllClients(String direction, String property);

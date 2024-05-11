@@ -25,6 +25,12 @@ public class ClientController {
         return "I'm alive!";
     }
 
+    @GetMapping("/hello")
+    public String hello() {
+        clientUseCase.findClientByNit(1L);
+        return clientUseCase.callClient().getValue();
+    }
+
     @PostMapping("/nuevo")
     public ResponseEntity<Result<Client>> saveClient(@RequestBody Client client) {
 
