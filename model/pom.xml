@@ -10,21 +10,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.bank.multimodule</groupId>
-    <artifactId>com.bank.multimodule.rest</artifactId>
+    <artifactId>com.bank.multimodule.model</artifactId>
     <packaging>jar</packaging>
-    <name>rest</name>
+    <name>model</name>
+
     <dependencies>
         <dependency>
-            <groupId>com.bank.multimodule</groupId>
-            <artifactId>com.bank.multimodule.model</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
-
-        <dependency>
-            <groupId>org.modelmapper</groupId>
-            <artifactId>modelmapper</artifactId>
-            <version>3.1.1</version>
-        </dependency>
-
     </dependencies>
 </project>

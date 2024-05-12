@@ -10,26 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.bank.multimodule</groupId>
-    <artifactId>com.bank.multimodule.service.impl</artifactId>
+    <artifactId>com.bank.multimodule.service</artifactId>
     <packaging>jar</packaging>
-    <name>service.impl</name>
+    <name>service</name>
 
     <dependencies>
-        <dependency>
-            <groupId>com.bank.multimodule</groupId>
-            <artifactId>com.bank.multimodule.repository</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.bank.multimodule</groupId>
-            <artifactId>com.bank.multimodule.rest</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.bank.multimodule</groupId>
-            <artifactId>com.bank.multimodule.service</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.bank.multimodule</groupId>
             <artifactId>com.bank.multimodule.model</artifactId>
